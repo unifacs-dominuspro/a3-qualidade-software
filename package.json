@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --inspect ./source/server.js",
-    "test": "mocha --timeout 2000 'source/test/**/*.js'"
+    "test:integration": "mocha --timeout 2000 'source/test/integration-test/*.js'",
+    "test:unit": "mocha 'source/test/unit-test/*.js'"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
