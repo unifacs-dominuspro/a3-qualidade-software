@@ -1,0 +1,16 @@
+version: "3.3"
+volumes:
+  redis:
+    driver: local
+  mysql_data:
+services:
+  mysql_a3:
+    image: mysql:5.7
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
