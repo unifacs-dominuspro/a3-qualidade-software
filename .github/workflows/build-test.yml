@@ -65,7 +65,7 @@ jobs:
         run: commitlint --from=main --to=HEAD --verbose
 
   semantic-versioning:
-    name: Sematic Versioning
+    name: Semantic Versioning
     runs-on: ubuntu-latest
     needs: validate-convetional-commits
 
@@ -73,15 +73,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.8.1'
-
       - name: Install Dependencies
         run: npm ci
 
-      - name: Generate Sematic Version
+      - name: Generate Semantic Version
         id: semver
         run: |
           VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | awk '{print $NF}')

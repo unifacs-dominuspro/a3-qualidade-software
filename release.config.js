@@ -7,4 +7,5 @@ module.exports = {
     '@semantic-release/npm', // Atualiza o número da versão no package.json
     '@semantic-release/git', // Commita os arquivos alterados e cria uma tag de versão no Git
   ],
+  "github-token": "${GH_TOKEN}"
 };

@@ -48,6 +48,6 @@
       "@semantic-release/github"
     ],
     "ci": true,
-    "github-token": "${MY_GITHUB_TOKEN}"
+    "github-token": "${GH_TOKEN}"
   }
 }
