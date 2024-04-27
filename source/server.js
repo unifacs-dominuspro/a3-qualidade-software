@@ -6,6 +6,8 @@ const databaseSync = require('./infrastructure/database/building-modeling-struct
 const userCreateInterface = require('./interfaces/user-interface/user-create-interface');
 const userAuthInterface = require('./interfaces/user-interface/user-auth-interface');
 const mathInterface = require('./interfaces/math-interface/math-interface');
+// import 'core-js/stable/structured-clone';
+
 dotenv.config();
 
 const server = express();
