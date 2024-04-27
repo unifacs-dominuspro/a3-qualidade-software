@@ -48,6 +48,7 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint
+        
   validate-convetional-commits:
     name: Validate Convetional Commits
     runs-on: ubuntu-latest
@@ -57,8 +58,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Validade Convetional Commits
-        run: npm run commitlint
+      - name: Install commitlint
+        run: npm install -g @commitlint/{cli,config-conventional}
+
+      - name: Validate Conventional Commits
+        run: commitlint --from=main --to=HEAD --verbose
+
   semantic-versioning:
     name: Sematic Versioning
     runs-on: ubuntu-latest
