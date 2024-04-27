@@ -58,7 +58,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validade Convetional Commits
-        run: npx commitlint --from=main -to=HEAD --verbose
+        run: npm run commitlint
   semantic-versioning:
     name: Sematic Versioning
     runs-on: ubuntu-latest
@@ -75,3 +75,4 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
