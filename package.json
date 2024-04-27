@@ -46,6 +46,8 @@
       "@semantic-release/changelog",
       "@semantic-release/git",
       "@semantic-release/github"
-    ]
+    ],
+    "ci": true,
+    "githubToken": "${GITHUB_TOKEN}"
   }
 }
