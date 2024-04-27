@@ -14,3 +14,17 @@ describe('Calculadora - Soma API', () => {
   },
   )
 });
+
+describe('Calculadora - Subtração API', () => {
+  it('Deve realizar uma subtração de uma expressão', () => {
+
+    const subtract = operation({
+      body: {
+        numbers: ["10-5-2"],
+      }
+    });
+
+    chai.expect(subtract).to.equal(3);
+
+  })
+})
