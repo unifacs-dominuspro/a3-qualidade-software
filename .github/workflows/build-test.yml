@@ -87,5 +87,5 @@ jobs:
           VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | awk '{print $NF}')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
         env:
-          github-token: ${{ secrets.MY_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
