@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - "main"
+      - "dev"
   pull_request:
     branches:
       - "main"
+      - "dev"
 
 jobs:
   build:
@@ -67,8 +69,17 @@ jobs:
         run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
 
       - name: Validate Conventional Commits
-        run: commitlint --from=${{ steps.current_branch.outputs.branch }} --to=HEAD --verbose
-
+        run: |
+          if [ "${{ steps.current_branch.outputs.branch }}" == "main" ]; then
+            echo "Running commitlint for main branch..."
+            commitlint --from=main --to=HEAD --verbose
+          elif [ "${{ steps.current_branch.outputs.branch }}" == "dev" ]; then
+            echo "Running commitlint for dev branch..."
+            commitlint --from=dev --to=HEAD --verbose
+          else
+            echo "Branch not recognized. Skipping commitlint."
+          fi
+          
   semantic-versioning:
     name: Semantic Versioning
     runs-on: ubuntu-latest
