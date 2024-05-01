@@ -62,8 +62,12 @@ jobs:
       - name: Install commitlint
         run: npm install -g @commitlint/{cli,config-conventional}
 
+      - name: Determine Current Branch
+        id: current_branch
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+
       - name: Validate Conventional Commits
-        run: commitlint --from=main --to=HEAD --verbose
+        run: commitlint --from=${{ steps.current_branch.outputs.branch }} --to=HEAD --verbose
 
   semantic-versioning:
     name: Semantic Versioning
