@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - "main"
+      - "dev"
   pull_request:
     branches:
       - "main"
+      - "dev"
 
 jobs:
   build:
@@ -50,8 +52,8 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-  validate-convetional-commits:
-    name: Validate Convetional Commits
+  validate-conventional-commits:
+    name: Validate Conventional Commits
     runs-on: ubuntu-latest
     needs: lint
 
@@ -62,13 +64,26 @@ jobs:
       - name: Install commitlint
         run: npm install -g @commitlint/{cli,config-conventional}
 
-      - name: Validate Conventional Commits
-        run: commitlint --from=main --to=HEAD --verbose
+      - name: Determine Current Branch
+        id: current_branch
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
 
+      - name: Validate Conventional Commits
+        run: |
+          if [ "${{ steps.current_branch.outputs.branch }}" == "main" ]; then
+            echo "Running commitlint for main branch..."
+            commitlint --from=main --to=HEAD --verbose
+          elif [ "${{ steps.current_branch.outputs.branch }}" == "dev" ]; then
+            echo "Running commitlint for dev branch..."
+            commitlint --from=dev --to=HEAD --verbose
+          else
+            echo "Branch not recognized. Skipping commitlint."
+          fi
+          
   semantic-versioning:
     name: Semantic Versioning
     runs-on: ubuntu-latest
-    needs: validate-convetional-commits
+    needs: validate-conventional-commits
     permissions:
       contents: write
       issues: write
