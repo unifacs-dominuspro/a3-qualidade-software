@@ -4,4 +4,5 @@ yarn.lock
 yarn-error.log
 package.lock
 .env
-package.lock.json*
+package-lock.json*
+package-lock.json 
