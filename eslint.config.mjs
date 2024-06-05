@@ -1,13 +1,20 @@
-import globals from "globals";
-
+import globals from 'globals';
 
 export default [
   {
-    files: ["**/*.js"], languageOptions: { sourceType: "commonjs" }, 
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: {
+        ...globals.es6,
+        ...globals.node
+      }
+    },
     rules: {
-      "no-dupe-else-if": "warn"
-
+      'no-dupe-else-if': 'error',
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: true
     }
-  },
-  { languageOptions: { globals: globals.node } },
+  }
 ];
