@@ -167,3 +167,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   Ferramenta de banco de dados: **[DBeaver](https://dbeaver.io/)**
 -   Teste de API:  **[Insomnia](https://insomnia.rest/)**
 -   Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**
+  
+#### **Integrantes da Equipe**
+
+-   Douglas Dórea da Silva Melo - RA: 1272215019
+-   Marcos Vinicius de Jesus Galvão - RA: 12722112437
+-   Ricardo Brito da Silva - RA: 12722129482
+-   Wilson Pinheiro dos Santos Neto - RA: 12723110270
